@@ -354,16 +354,63 @@
         padding: 0 8px;
       }
 
+      /* Contact info section */
+      .contact-section {
+        margin-top: 28px;
+        opacity: 0;
+        animation: slideUp 0.9s ease forwards;
+        animation-delay: 1.0s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 0.04em;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        padding: 18px 20px;
+        border-radius: 6px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .contact-website {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .contact-phone {
+        color: var(--white);
+        font-weight: 400;
+        font-size: 0.78rem;
+        letter-spacing: 0.05em;
+      }
+      .contact-email {
+        color: var(--gold);
+        text-decoration: none;
+        transition: color 0.2s;
+        word-break: break-all;
+      }
+      .contact-email:hover {
+        color: var(--white);
+        text-decoration: underline;
+      }
+
       /* Progress */
       .progress-wrap {
-        margin-top: clamp(32px, 5vh, 48px);
+        margin-top: clamp(28px, 5vh, 40px);
         width: 100%;
         max-width: 340px;
         margin-left: auto;
         margin-right: auto;
         opacity: 0;
         animation: fadeIn 1s ease forwards;
-        animation-delay: 1.1s;
+        animation-delay: 1.15s;
       }
       .progress-label {
         display: flex;
@@ -393,12 +440,12 @@
         background: linear-gradient(90deg, var(--gold), #f5d78e);
         border-radius: 2px;
         animation: fillBar 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        animation-delay: 1.4s;
+        animation-delay: 1.5s;
       }
 
       /* Notify */
       .notify-row {
-        margin-top: clamp(24px, 4vh, 36px);
+        margin-top: clamp(24px, 4vh, 32px);
         display: flex;
         align-items: stretch;
         border: 1px solid var(--line);
@@ -410,7 +457,7 @@
         margin-right: auto;
         opacity: 0;
         animation: fadeIn 1s ease forwards;
-        animation-delay: 1.3s;
+        animation-delay: 1.35s;
       }
       .notify-input {
         flex: 1;
@@ -682,6 +729,13 @@
           shortly.
         </p>
 
+        <!-- Contact information -->
+        <div class="contact-section">
+          <div class="contact-website">www.sabfootballacademy.com</div>
+          <a href="mailto:sabfootballacademy1@gmail.com" class="contact-email">sabfootballacademy1@gmail.com</a>
+          <div class="contact-phone">08024543582</div>
+        </div>
+
         <div class="progress-wrap">
           <div class="progress-label">
             <span>Progress</span>
@@ -699,7 +753,7 @@
             placeholder="your@email.com"
             id="emailInput"
           />
-          <button class="notify-btn" onclick="handleNotify()">Notify Me</button>
+          <button class="notify-btn" id="notifyButton">Notify Me</button>
         </div>
       </div>
     </div>
@@ -727,7 +781,7 @@
 
       function handleNotify() {
         const input = document.getElementById("emailInput");
-        const btn = document.querySelector(".notify-btn");
+        const btn = document.getElementById("notifyButton");
         if (!input.value || !input.value.includes("@")) {
           input.style.outline = "1px solid #e8b94a";
           setTimeout(() => (input.style.outline = ""), 1200);
@@ -741,6 +795,13 @@
         input.disabled = true;
         btn.disabled = true;
       }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const notifyBtn = document.getElementById('notifyButton');
+        if (notifyBtn) {
+          notifyBtn.addEventListener('click', handleNotify);
+        }
+      });
     </script>
   </body>
 </html>
